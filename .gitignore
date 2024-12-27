@@ -1,0 +1,15 @@
+# Terraform directories and files
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Logs
+*.log
+
+# Ignore sensitive or temporary files
+*.bak
+*.swp
+*.tmp
+*.backup
+.DS_Store

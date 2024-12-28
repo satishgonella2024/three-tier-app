@@ -67,6 +67,9 @@ You should see:
 Hello from <hostname>
 
 🌐 Architecture Diagram
+Below is the architecture diagram for our three-tier application:
+
+![Three-Tier Architecture](diagrams/three-tier-simple-architecture-Page-1.drawio.png)
 
 📦 Modules and Resources
 	•	VPC Module: Creates a Virtual Private Cloud (VPC) with public and private subnets.

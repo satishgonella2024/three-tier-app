@@ -44,6 +44,26 @@ pipeline {
                 }
             }
         }
+        stage('Test Deployment') {
+            when {
+                expression { params.ACTION == 'deploy' }
+            }
+            steps {
+                script {
+                    echo "Testing the deployment..."
+                    def albDns = sh(script: "terraform output -raw alb_dns_name", returnStdout: true).trim()
+                    echo "ALB DNS Name: ${albDns}"
+                    def testResponse = sh(script: "curl -s http://${albDns}", returnStdout: true).trim()
+                    echo "Test Response: ${testResponse}"
+
+                    if (testResponse.contains("Hello from")) {
+                        echo "Test Passed: Application is responding as expected."
+                    } else {
+                        error "Test Failed: Unexpected response from the application."
+                    }
+                }
+            }
+        }
     }
     post {
         success {
